@@ -27,22 +27,22 @@
     justify-content: center;
     align-items: center;
 }
-.circle, .cross {
+.circle, .cross, .crossTaken, .circleTaken {
     border: none;
     outline: none;
 }
 
 
-.circle div {
+.circle div,
+.circleTaken div {
     background-color: none;
     border-radius: 50px/50px;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
 }
 
-
-
-.cross div {
+.cross div,
+.crossTaken div {
     position: relative;
     width: 100%;
     aspect-ratio: 1;
@@ -58,10 +58,21 @@
     height: 21px; 
     border-radius: 10px;    
 }
-.cross div::before {
+.crossTaken div::before,
+.crossTaken div::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 21px; 
+    border-radius: 10px;
+    background-color: rgb(185, 154, 140);   
+}
+.cross div::before,
+.crossTaken div::before {
     transform: rotate(45deg);
 }
-.cross div::after {
+.cross div::after,
+.crossTaken div::after {
     transform: rotate(-45deg);
 }
 
@@ -71,4 +82,8 @@
 }
 #game .cross:hover div:after, #game .cross:hover div:before {
     background-color: rgba(185, 154, 140, 0.302);
+}
+
+.circleTaken div {
+    border: solid 21px rgb(185, 154, 140); 
 }
