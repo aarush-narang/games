@@ -1,0 +1,74 @@
+/* game board */
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 80vh;
+}
+#game {
+    display: inline-grid;
+    grid-template-rows: 33.3% 33.3% 33.3%;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+    gap: 2px;
+
+    background-color: black;
+
+    width: 20vw;
+    min-width: 300px;
+    max-width: 400px;
+    aspect-ratio: 1;
+}
+
+/* game players */
+#game > button {
+    background-color: #c4dcdc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.circle, .cross {
+    border: none;
+    outline: none;
+}
+
+
+.circle div {
+    background-color: none;
+    border-radius: 50px/50px;
+    width: 50px;
+    height: 50px;
+}
+
+
+
+.cross div {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.cross div::before,
+.cross div::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 21px; 
+    border-radius: 10px;    
+}
+.cross div::before {
+    transform: rotate(45deg);
+}
+.cross div::after {
+    transform: rotate(-45deg);
+}
+
+
+#game .circle:hover div {
+    border: solid 21px rgba(185, 154, 140, 0.302);
+}
+#game .cross:hover div:after, #game .cross:hover div:before {
+    background-color: rgba(185, 154, 140, 0.302);
+}

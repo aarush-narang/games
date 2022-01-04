@@ -1,0 +1,15 @@
+node_modules
+.DS_Store
+dist
+dist-ssr
+*.local
+package.json
+package-lock.json
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env
+cert.pem
+key.pem
+__pycache__

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/home.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+    <title>Home</title>
+</head>
+<body>
+    <div id="main-container">
+        <h1 id="games-title">Choose a game</h1>
+        <div id="games-container">
+            <button class="game-type" type="button" title="Tic Tac Toe" onclick="window.location = '/tictactoe'">Tic Tac Toe</button>
+            <button class="game-type" type="button" title="Rock Paper Scissors" onclick="window.location = '/rps'">Rock Paper Scissors</button>
+            <button class="game-type" type="button" title="Hangman" onclick="window.location = '/hangman'">Hangman</button>
+            <button class="game-type" type="button" title="Guessing Game (you guess)" onclick="window.location = '/guess-user'">Guessing Game (you guess)</button>
+            <button class="game-type" type="button" title="Guessing Game (computer guesses)" onclick="window.location = '/guess-comp'">Guessing Game (computer guesses)</button>
+        </div>
+    </div>
+</body>
+</html>
