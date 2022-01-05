@@ -37,7 +37,7 @@
 .circleTaken div {
     background-color: none;
     border-radius: 50px/50px;
-    width: 50%;
+    width: 40%;
     aspect-ratio: 1;
 }
 
@@ -45,11 +45,12 @@
 .crossTaken div {
     position: relative;
     width: 100%;
+    max-width: 100px;
     aspect-ratio: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
-}   
+}
 .cross div::before,
 .cross div::after {
     position: absolute;

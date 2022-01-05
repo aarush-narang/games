@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/hangman.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/hangman.js') }}" defer></script>
     <title>Hangman</title>
 </head>
 <body>
@@ -12,7 +14,45 @@
         <button id="return-home" onclick="window.location = '/'">Return Home</button>
     </div>
     <div id="container">
-        
+        <div id="nav">
+            <div id="nav-buttons">
+                <!-- reveal word, reset word/new word, hint (random letter, max 2?) -->
+            </div>
+        </div>
+        <div id="wordDisplay">
+            <div class="letter">
+                <letter>a</letter>
+                <div class="letter-underline"></div>
+            </div>
+            <div class="letter">
+                <letter>a</letter>
+                <div class="letter-underline"></div>
+            </div>
+            <div class="letter">
+                <letter></letter>
+                <div class="letter-underline"></div>
+            </div>
+            <div class="letter">
+                <letter></letter>
+                <div class="letter-underline"></div>
+            </div>
+            <div class="letter">
+                <letter></letter>
+                <div class="letter-underline"></div>
+            </div>
+            <div class="letter">
+                <letter></letter>
+                <div class="letter-underline"></div>
+            </div>
+            <div class="letter">
+                <letter></letter>
+                <div class="letter-underline"></div>
+            </div>
+            <div class="letter">
+                <letter></letter>
+                <div class="letter-underline"></div>
+            </div>
+        </div>
     </div>
 </body>
 </html>

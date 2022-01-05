@@ -1,0 +1,30 @@
+#container {
+    display: flex;
+    justify-content: center;
+    margin-top: 70px;
+}
+
+#wordDisplay {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
+
+.letter {
+    text-align: center;
+}
+
+letter {
+    margin: 0 5px 0 5px;
+    font-family: Urbanist;
+    font-size: 150%;
+}
+
+.letter-underline {
+    margin: 0 5px 0 5px;
+    width: 40px;
+    height: 2px;
+    background-color: black;
+}

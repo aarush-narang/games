@@ -1,3 +1,5 @@
+import random
+
 __name__ = 'main' # have to change the name for some reason otherwise it wont import
 
 from flask import Blueprint, render_template
@@ -19,6 +21,14 @@ def rps():
 @main_router.route('/hangman')
 def hangman():
     return render_template('hangman.html')
+
+@main_router.get('/hangman/randomWord')
+def getHangmanWord():
+    with open('./static/other/allwords.txt') as f:
+        words = list(f)
+
+    word = random.choice(words).strip()
+    return word
 
 @main_router.route('/guess-user')
 def guessUser():
