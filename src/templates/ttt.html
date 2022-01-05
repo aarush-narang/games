@@ -10,12 +10,20 @@
     <title>Tic Tac Toe</title>
 </head>
 <body>
+    <div>
+        <button id="return-home" onclick="window.location = '/'">Return Home</button>
+    </div>
     <div id="container">
         <div id="nav">
-
+            <div id="score">(X) 0 - 0 (O)</div>
+            <player>Player "X"</player>
+            <div id="nav-buttons">
+                <button id="restart-btn" class="nav-btn" type="button">Restart</button>
+                <button id="reset-score-btn" class="nav-btn" type="button">Reset Score</button>
+            </div>
         </div>
         <div id="game">
-            <button class="cross"><div></div></button>
+            <button class="cross"><div></div></button>  
             <button class="cross"><div></div></button>
             <button class="cross"><div></div></button>
             <button class="cross"><div></div></button>

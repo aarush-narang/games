@@ -1,10 +1,10 @@
 /* game board */
 #container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    min-height: 80vh;
 }
 #game {
     display: inline-grid;
@@ -27,7 +27,7 @@
     justify-content: center;
     align-items: center;
 }
-.circle, .cross, .crossTaken, .circleTaken {
+.circle, .cross, .crossTaken, .circleTaken, .gameFinished {
     border: none;
     outline: none;
 }
@@ -37,8 +37,8 @@
 .circleTaken div {
     background-color: none;
     border-radius: 50px/50px;
-    width: 40px;
-    height: 40px;
+    width: 50%;
+    aspect-ratio: 1;
 }
 
 .cross div,
@@ -49,7 +49,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-}
+}   
 .cross div::before,
 .cross div::after {
     position: absolute;
@@ -86,4 +86,59 @@
 
 .circleTaken div {
     border: solid 21px rgb(185, 154, 140); 
+}
+/* nav text and buttons */
+
+#nav {
+    padding: 70px 0px 50px 0px;
+}
+
+#score {
+    font-size: 240%;
+    font-family: Urbanist;
+    font-weight: bold;
+    color: #324B4B;
+    padding-bottom: 20px;
+}
+
+player {
+    font-size: 200%;
+    font-family: Urbanist;
+    font-weight: bold;
+    color: #416161;
+}
+
+.nav-btn {
+    border: none;
+    outline: none;
+    font-family: Urbanist;
+    font-weight: bold;
+
+    border-radius: 5px;
+
+    min-width: 130px;
+    width: 15vw;
+    max-width: 160px;
+    min-height: 35px;
+    height: 5vh;
+    max-height: 45px;
+
+    margin-top: 30px;
+    margin-right: 5px;
+    margin-left: 5px;
+
+    background-color: #DDBDAE;
+
+    box-shadow: 6px 8px 8px 1px #76522be7;
+    transition: 250ms ease;
+
+    cursor: pointer;
+}
+
+.nav-btn:hover {
+    box-shadow: 6px 8px 6px 1px #76522be7;
+}
+.nav-btn:active {
+    box-shadow: 3px 4px 4px 0px #76522be7;
+    transform: translateX(2px) translateY(5px);
 }

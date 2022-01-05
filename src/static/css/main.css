@@ -1,4 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Coming+Soon&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Urbanist&display=swap');
+
 body {
     background-color: #c4dcdc;
     box-sizing: border-box;
+}
+
+#return-home {
+    border: none;
+    outline: none;
+    font-family: Urbanist;
+    font-weight: bold;
+
+    width: 130px;
+    height: 35px;
+    border-radius: 10px;
+    margin: 10px 0 0 10px;
+
+    background-color: #DDBDAE;
+    box-shadow: 3px 4px 6px 1px #76522be7;
+
+    transition: 250ms ease;
+
+    cursor: pointer;
+}
+#return-home:hover {
+    box-shadow: 2px 3px 6px 1px #76522be7;
+}
+#return-home:active {
+    box-shadow: 1px 2px 4px 0px #76522be7;
+    transform: translateX(1px) translateY(3px);
 }
