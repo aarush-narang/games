@@ -42,10 +42,11 @@
 
 .game-type:hover {
     box-shadow: 6px 8px 6px 1px #76522be7;
+    transform: translateX(1px) translateY(2px);
 }
 .game-type:active {
     box-shadow: 3px 4px 4px 0px #76522be7;
-    transform: translateX(2px) translateY(5px);
+    transform: translateX(2px) translateY(4px);
 }
 
 #games-title {
