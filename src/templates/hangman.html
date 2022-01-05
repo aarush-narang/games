@@ -14,9 +14,15 @@
         <button id="return-home" onclick="window.location = '/'">Return Home</button>
     </div>
     <div id="container">
+        <div id="hangman">
+            <!-- create shapes to create the image of the hangman when they input an incorrect letter -->
+        </div>
         <div id="nav">
             <div id="nav-buttons">
-                <!-- reveal word, reset word/new word, hint (random letter, max 2?) -->
+                <button id="reveal-word" class="nav-btn" type="button">Reveal Word</button>
+                <button id="new-word" class="nav-btn" type="button">Get new word</button>
+                <button id="word-hint" class="nav-btn" type="button">Hint</button>
+                <!-- hint (random letter, max 2?) -->
             </div>
         </div>
         <div id="wordDisplay">
@@ -51,6 +57,19 @@
             <div class="letter">
                 <letter></letter>
                 <div class="letter-underline"></div>
+            </div>
+        </div>
+        <div>
+            <div id="user-input-container">
+                <!-- input for letters/word guesses -->
+                Guess Here:
+                <form id="user-guess-form" autocomplete="off" >
+                    <input id="user-input" type="text">
+                    <button id="user-input-submit" type="submit">Guess</button>
+                </form>
+            </div>
+            <div id="error-msg"> <!-- add red border and lighter red bkg color -->
+                testes
             </div>
         </div>
     </div>

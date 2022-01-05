@@ -14,6 +14,9 @@ function getNewWord() {
 function loadWord(word) {
     const word_arr = word.split('')
     console.log(word_arr)
+    word_arr.forEach(letter => {
+        return
+    });
 }
 
 getNewWord()

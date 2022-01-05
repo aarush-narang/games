@@ -12,4 +12,4 @@ csrf.init_app(app)
 app.register_blueprint(main_router.main_router, url_prefix='/')
 
 if __name__ == '__main__':
-    app.run(host=os.getenv('DOMAIN'), port=os.getenv('PORT'), ssl_context=('../cert.pem', '../key.pem'), debug=True) # certificates for https
+    app.run(host=os.getenv('DOMAIN'), port=os.getenv('PORT'), ssl_context=('adhoc'), debug=True) # certificates for https

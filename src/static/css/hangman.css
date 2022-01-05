@@ -1,30 +1,98 @@
 #container {
-    display: flex;
-    justify-content: center;
-    margin-top: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 70px;
+}
+
+#nav {
+  padding: 70px 0px 50px 0px;
+}
+
+.nav-btn {
+  border: none;
+  outline: none;
+  font-family: Urbanist;
+  font-weight: bold;
+
+  border-radius: 5px;
+
+  min-width: 130px;
+  width: 15vw;
+  max-width: 160px;
+  min-height: 35px;
+  height: 5vh;
+  max-height: 45px;
+
+  margin-top: 30px;
+  margin-right: 5px;
+  margin-left: 5px;
+
+  background-color: #ddbdae;
+
+  box-shadow: 6px 8px 8px 1px #76522be7;
+  transition: 250ms ease;
+
+  cursor: pointer;
+}
+
+.nav-btn:hover {
+  box-shadow: 6px 8px 6px 1px #76522be7;
+  transform: translateX(1px) translateY(2px);
+}
+.nav-btn:active {
+  box-shadow: 3px 4px 4px 0px #76522be7;
+  transform: translateX(2px) translateY(4px);
 }
 
 #wordDisplay {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
-
-
 .letter {
-    text-align: center;
+  text-align: center;
 }
 
 letter {
-    margin: 0 5px 0 5px;
-    font-family: Urbanist;
-    font-size: 150%;
+  margin: 0 5px 0 5px;
+  font-family: Urbanist;
+  font-size: 150%;
 }
 
 .letter-underline {
-    margin: 0 5px 0 5px;
-    width: 40px;
-    height: 2px;
-    background-color: black;
+  margin: 0 5px 0 5px;
+  width: 40px;
+  height: 2px;
+  background-color: black;
+}
+
+#user-input-container {
+    display: flex;
+    margin-top: 20px;
+    font-size: 15px;
+    font-family: Urbanist;
+    color: #324B4B;
+}
+#user-guess-form {
+    margin-left: 10px;
+}
+
+#user-input {
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    padding: 5px 5px 5px 8px;
+    font-family: Urbanist;
+}
+
+#error-msg {
+    font-size: 16px;
+    font-family: Urbanist;
+    color: #324B4B;
+    margin-top: 20px;
+    text-align: center;
+    background-color: rgb(180, 122, 122);
 }
