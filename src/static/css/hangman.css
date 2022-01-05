@@ -11,23 +11,25 @@
 }
 
 .nav-btn {
+    min-width: 130px;
+    width: 15vw;
+    max-width: 160px;
+    min-height: 35px;
+    height: 5vh;
+    max-height: 45px;
+  
+    margin-top: 30px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.btn {
   border: none;
   outline: none;
   font-family: Urbanist;
   font-weight: bold;
 
   border-radius: 5px;
-
-  min-width: 130px;
-  width: 15vw;
-  max-width: 160px;
-  min-height: 35px;
-  height: 5vh;
-  max-height: 45px;
-
-  margin-top: 30px;
-  margin-right: 5px;
-  margin-left: 5px;
 
   background-color: #ddbdae;
 
@@ -37,11 +39,11 @@
   cursor: pointer;
 }
 
-.nav-btn:hover {
+.btn:hover {
   box-shadow: 6px 8px 6px 1px #76522be7;
   transform: translateX(1px) translateY(2px);
 }
-.nav-btn:active {
+.btn:active {
   box-shadow: 3px 4px 4px 0px #76522be7;
   transform: translateX(2px) translateY(4px);
 }
@@ -69,30 +71,68 @@ letter {
   background-color: black;
 }
 
+#user-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 #user-input-container {
-    display: flex;
-    margin-top: 20px;
-    font-size: 15px;
-    font-family: Urbanist;
-    color: #324B4B;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 20px;
+  font-size: 15px;
+  font-family: Urbanist;
+  color: #324b4b;
 }
 #user-guess-form {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
 #user-input {
-    border-radius: 4px;
-    outline: none;
+  border-radius: 5px;
+  outline: none;
+  background-color: #ddbdae;
+  border: 1px solid#dba389;
+  padding: 5px 5px 5px 8px;
+  font-family: Urbanist;
+}
+
+#user-input-submit {
     border: none;
-    padding: 5px 5px 5px 8px;
-    font-family: Urbanist;
+    outline: none;
+
+    width: 55px;
+    height: 28px;
 }
 
 #error-msg {
-    font-size: 16px;
-    font-family: Urbanist;
-    color: #324B4B;
-    margin-top: 20px;
-    text-align: center;
-    background-color: rgb(180, 122, 122);
+  display: block;
+
+  font-size: 16px;
+  font-family: Urbanist;
+  color: #324b4b;
+  text-align: center;
+
+  background-color: rgb(230, 161, 161);
+
+  margin-top: 20px;
+  min-width: 150px;
+  width: fit-content;
+  max-width: 250px;
+  height: fit-content;
+  word-wrap: break-word;
+  padding: 8px 10px 8px 10px;
+  border-radius: 6px;
+  box-shadow: 0 0 0 2px rgb(189, 117, 117), 0 0 0 4px rgb(197, 110, 110),
+    6px 8px 10px 4px #e07d7de7;
+  transition: 200ms ease;
+}
+#error-msg:hover {
+  box-shadow: 0 0 0 2px rgb(189, 117, 117), 0 0 0 4px rgb(197, 110, 110),
+    2px 4px 6px 4px #e07d7de7;
+    transform: translateY(4px) translateX(2px);
 }
