@@ -156,6 +156,33 @@ buttons.forEach(button => {
         }
     })
 })
+// keyboard inputs (1-9)
+document.addEventListener('keypress', (event) => {
+    const key = Number(event.key)
+    if (Number.isNaN(key)) return;
+    if (key === 0) return;
+    if (buttons[key - 1].classList.contains('crossTaken') || buttons[key - 1].classList.contains('circleTaken') || buttons[key - 1].classList.contains('gameFinished')) return
+
+    if (currentPlayer === 1) buttons[key - 1].classList.add('crossTaken')
+    if (currentPlayer === 2) buttons[key - 1].classList.add('circleTaken')
+    buttons[key - 1].classList.remove('circle')
+    buttons[key - 1].classList.remove('cross')
+
+    currentPlayer = currentPlayer === 1 ? 2 : 1
+    switchPlayer()
+
+    checkBoard()
+    if (gameFinished) {
+        buttons.forEach(button => {
+            if (button.classList.contains('cross') || button.classList.contains('circle')) {
+                button.classList.remove('cross')
+                button.classList.remove('circle')
+                button.classList.add('gameFinished')
+            }
+        })
+        return
+    }
+})
 
 // tic tac toe restart button
 const restartBtn = document.getElementById('restart-btn')
