@@ -11,47 +11,38 @@
 }
 
 .nav-btn {
-    min-width: 130px;
-    width: 15vw;
-    max-width: 160px;
-    min-height: 35px;
-    height: 5vh;
-    max-height: 45px;
-  
-    margin-top: 30px;
-    margin-right: 5px;
-    margin-left: 5px;
-}
+  min-width: 120px;
+  width: 15vw;
+  max-width: 160px;
+  min-height: 35px;
+  height: 5vh;
+  max-height: 45px;
 
-.btn {
-  border: none;
-  outline: none;
-  font-family: Urbanist;
-  font-weight: bold;
-
-  border-radius: 5px;
-
-  background-color: #ddbdae;
-
-  box-shadow: 6px 8px 8px 1px #76522be7;
-  transition: 250ms ease;
-
-  cursor: pointer;
-}
-
-.btn:hover {
-  box-shadow: 6px 8px 6px 1px #76522be7;
-  transform: translateX(1px) translateY(2px);
-}
-.btn:active {
-  box-shadow: 3px 4px 4px 0px #76522be7;
-  transform: translateX(2px) translateY(4px);
+  margin-top: 30px;
+  margin-right: 5px;
+  margin-left: 5px;
 }
 
 #wordDisplay {
   display: flex;
   flex-direction: row;
+  /* fix horizontal scrolling issue with smaller screens 
+  by breaking the word into multiple lines */
   justify-content: center;
+  width: 100%;
+}
+
+@media screen and (max-width: 500px) {
+  #nav-buttons {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav-btn {
+    min-width: 200px;
+    width: 75vw;
+    max-width: 300px;
+  }
 }
 
 .letter {
@@ -86,8 +77,9 @@ letter {
   margin-top: 20px;
   font-size: 15px;
   font-family: Urbanist;
-  color: #324b4b;
+  color: black;
 }
+
 #user-guess-form {
   margin-left: 10px;
 }
@@ -102,22 +94,41 @@ letter {
 }
 
 #user-input-submit {
-    border: none;
-    outline: none;
+  border: none;
+  outline: none;
+  font-family: Urbanist;
+  font-weight: bold;
+  color: black;
 
-    width: 55px;
-    height: 28px;
+  border-radius: 4px;
+  width: 55px;
+  height: 25px;
+  margin-top: 5px;
+
+  background-color: #ddbdae;
+
+  box-shadow: 2px 3px 4px 1px #76522be7;
+  transition: 250ms ease;
+
+  cursor: pointer;
 }
 
-#error-msg {
-  display: block;
+#user-input-submit:hover {
+  background-color: #edcaba;
+}
+
+#user-input-submit:active {
+  box-shadow: 1px 2px 3px 0px #76522be7;
+
+}
+
+#msg {
+  display: none;
 
   font-size: 16px;
   font-family: Urbanist;
-  color: #324b4b;
+  color: black;
   text-align: center;
-
-  background-color: rgb(230, 161, 161);
 
   margin-top: 20px;
   min-width: 150px;
@@ -127,12 +138,27 @@ letter {
   word-wrap: break-word;
   padding: 8px 10px 8px 10px;
   border-radius: 6px;
-  box-shadow: 0 0 0 2px rgb(189, 117, 117), 0 0 0 4px rgb(197, 110, 110),
-    6px 8px 10px 4px #e07d7de7;
+
   transition: 200ms ease;
 }
-#error-msg:hover {
+
+.error {
+  background-color: rgb(230, 161, 161);
+  box-shadow: 0 0 0 2px rgb(189, 117, 117), 0 0 0 4px rgb(197, 110, 110),
+    6px 8px 10px 4px #e07d7de7;
+}
+.win {
+  background-color: rgb(169, 230, 161);
+  box-shadow: 0 0 0 2px rgb(96, 163, 119), 0 0 0 4px rgb(156, 197, 110),
+    6px 8px 10px 4px #a2e491e7;
+}
+.error:hover {
   box-shadow: 0 0 0 2px rgb(189, 117, 117), 0 0 0 4px rgb(197, 110, 110),
     2px 4px 6px 4px #e07d7de7;
-    transform: translateY(4px) translateX(2px);
+  transform: translateY(4px) translateX(2px);
+}
+.win:hover {
+  box-shadow: 0 0 0 2px rgb(96, 163, 119), 0 0 0 4px rgb(156, 197, 110),
+    2px 4px 6px 4px #a2e491e7;
+  transform: translateY(4px) translateX(2px);
 }

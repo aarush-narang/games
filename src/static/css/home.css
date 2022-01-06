@@ -23,7 +23,7 @@
     font-family: Urbanist;
     font-size: 120%;
     font-weight: bold;
-    color: #2c3c3c;
+    color: black;
 
     background-color: #DDBDAE;
 
@@ -50,7 +50,7 @@
 }
 
 #games-title {
-    color: #324B4B;
+    color: black;
     font-size: 170%;
     font-family: Coming Soon;
 }

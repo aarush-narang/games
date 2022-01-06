@@ -18,6 +18,7 @@
             <!-- create shapes to create the image of the hangman when they input an incorrect letter -->
         </div>
         <div id="nav">
+            <div id="hints"></div>
             <div id="nav-buttons">
                 <button id="reveal-word" class="nav-btn btn" type="button">Reveal Word</button>
                 <button id="new-word" class="nav-btn btn" type="button">Get new word</button>
@@ -25,50 +26,18 @@
                 <!-- hint (random letter, max 2?) -->
             </div>
         </div>
-        <div id="wordDisplay">
-            <div class="letter">
-                <letter>a</letter>
-                <div class="letter-underline"></div>
-            </div>
-            <div class="letter">
-                <letter>a</letter>
-                <div class="letter-underline"></div>
-            </div>
-            <div class="letter">
-                <letter></letter>
-                <div class="letter-underline"></div>
-            </div>
-            <div class="letter">
-                <letter></letter>
-                <div class="letter-underline"></div>
-            </div>
-            <div class="letter">
-                <letter></letter>
-                <div class="letter-underline"></div>
-            </div>
-            <div class="letter">
-                <letter></letter>
-                <div class="letter-underline"></div>
-            </div>
-            <div class="letter">
-                <letter></letter>
-                <div class="letter-underline"></div>
-            </div>
-            <div class="letter">
-                <letter></letter>
-                <div class="letter-underline"></div>
-            </div>
-        </div>
+        <div id="wordDisplay"></div>
         <div id="user-container">
             <div id="user-input-container">
                 <!-- input for letters/word guesses -->
                 Guess Here:
-                <form id="user-guess-form" autocomplete="off" >
+                <form id="user-guess-form" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" >
                     <input id="user-input" type="text">
-                    <button id="user-input-submit" class="btn" type="submit">Guess</button>
+                    <!-- disable the user input when they reveal -->
+                    <button id="user-input-submit" type="submit">Guess</button>
                 </form>
             </div>
-            <div id="error-msg"> <!-- add red border and lighter red bkg color -->
+            <div id="msg"> <!-- add red border and lighter red bkg color -->
                 the dog jumped over the fox and the cat went under the bridge the dog jumped over the fox and the cat went under the bridge
             </div>
             <!-- clicking on the error dismisses it, also create an x on the top right of the error which dismisses and if they start typing again it dismisses -->

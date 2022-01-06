@@ -6,6 +6,7 @@
     align-items: center;
     text-align: center;
 }
+
 #game {
     display: inline-grid;
     grid-template-rows: 33.3% 33.3% 33.3%;
@@ -21,13 +22,18 @@
 }
 
 /* game players */
-#game > button {
+#game>button {
     background-color: #c4dcdc;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.circle, .cross, .crossTaken, .circleTaken, .gameFinished {
+
+.circle,
+.cross,
+.crossTaken,
+.circleTaken,
+.gameFinished {
     border: none;
     outline: none;
 }
@@ -51,27 +57,31 @@
     flex-direction: column;
     justify-content: center;
 }
+
 .cross div::before,
 .cross div::after {
     position: absolute;
     content: '';
     width: 100%;
-    height: 21px; 
-    border-radius: 10px;    
+    height: 21px;
+    border-radius: 10px;
 }
+
 .crossTaken div::before,
 .crossTaken div::after {
     position: absolute;
     content: '';
     width: 100%;
-    height: 21px; 
+    height: 21px;
     border-radius: 10px;
-    background-color: rgb(185, 154, 140);   
+    background-color: rgb(185, 154, 140);
 }
+
 .cross div::before,
 .crossTaken div::before {
     transform: rotate(45deg);
 }
+
 .cross div::after,
 .crossTaken div::after {
     transform: rotate(-45deg);
@@ -81,13 +91,16 @@
 #game .circle:hover div {
     border: solid 21px rgba(185, 154, 140, 0.302);
 }
-#game .cross:hover div:after, #game .cross:hover div:before {
+
+#game .cross:hover div:after,
+#game .cross:hover div:before {
     background-color: rgba(185, 154, 140, 0.302);
 }
 
 .circleTaken div {
-    border: solid 21px rgb(185, 154, 140); 
+    border: solid 21px rgb(185, 154, 140);
 }
+
 /* nav text and buttons */
 
 #nav {
@@ -98,7 +111,7 @@
     font-size: 240%;
     font-family: Urbanist;
     font-weight: bold;
-    color: #324B4B;
+    color: black;
     padding-bottom: 20px;
 }
 
@@ -106,17 +119,10 @@ player {
     font-size: 200%;
     font-family: Urbanist;
     font-weight: bold;
-    color: #416161;
+    color: rgb(29, 29, 29);
 }
 
 .nav-btn {
-    border: none;
-    outline: none;
-    font-family: Urbanist;
-    font-weight: bold;
-
-    border-radius: 5px;
-
     min-width: 130px;
     width: 15vw;
     max-width: 160px;
@@ -134,13 +140,4 @@ player {
     transition: 250ms ease;
 
     cursor: pointer;
-}
-
-.nav-btn:hover {
-    box-shadow: 6px 8px 6px 1px #76522be7;
-    transform: translateX(1px) translateY(2px);
-}
-.nav-btn:active {
-    box-shadow: 3px 4px 4px 0px #76522be7;
-    transform: translateX(2px) translateY(4px);
 }
