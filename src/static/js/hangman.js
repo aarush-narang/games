@@ -1,5 +1,6 @@
 let fullWord = ''
 let fullWordArr = []
+let currentWordArr = []
 let lettersFound = 0
 let revealed = false
 let hints = 0
@@ -13,7 +14,7 @@ let difficulty = '' // coming soon!
 
 
 const wordDisplay = document.getElementById('wordDisplay')
-const userForm = document.getElementById('user-guess-form') // guesses
+const userForm = document.getElementById('user-guess-form')
 const userInput = document.getElementById('user-input')
 const userSubmitBtn = document.getElementById('user-input-submit')
 const revealWordBtn = document.getElementById('reveal-word')
@@ -37,21 +38,21 @@ function clearVariables() {
 }
 
 function getNewWord() {
-    clearVariables()
+    clearVariables() // make sure no previous word/variables are stored
     const wordReq = new XMLHttpRequest()
     wordReq.addEventListener('load', (event) => {
-        const word = event.target.responseText
-        fullWord = word
+        fullWord = event.target.responseText
+        fullWordArr = fullWord.split('')
+        currentWordArr = [...fullWordArr]
+
+        const wordLength = fullWord.length
+        hints = wordLength < 6 ? 1 : wordLength < 10 ? 2 : wordLength < 14 ? 3 : wordLength < 16 ? 4 : 5 // calculates the max number of hints allowed
+        hintsDisplay.innerText = `Hints: ${hints}`
+
+        loadWord(fullWord)
 
         console.log(fullWord)
-
-        fullWordArr = word.split('')
-        fullWordArrMod = word.split('')
-        const wordLength = word.length
-        hints = wordLength < 6 ? 1 : wordLength < 10 ? 2 : wordLength < 14 ? 3 : wordLength < 16 ? 4 : 5 // calculates the max number of hints allowed
         console.log(hints)
-        hintsDisplay.innerText = `Hints: ${hints}`
-        loadWord(word)
     })
     wordReq.addEventListener('error', (event) => {
         console.log(event)
@@ -75,8 +76,9 @@ function loadWord(word) {
     wordDisplay.innerHTML = innerhtml
 }
 
-function revealWord(word) {
+function revealWord() {
     if (revealed) return
+    revealed = true
     const wordDisplay = document.getElementById('wordDisplay')
     let innerhtml = ''
     fullWordArr.forEach(letter => {
@@ -96,16 +98,10 @@ function displayError(msg = 'Error', delay = 5000) {
     clientMsg.innerText = msg
     clientMsg.style.display = 'block'
     clientMsg.classList.add('error')
-    const errorMsgTimeout = setTimeout(() => {
-        clientMsg.style.display = 'none'
-        clientMsg.innerText = ''
-        clientMsg.classList.remove('error')
-    }, delay);
+    const errorMsgTimeout = setTimeout(() => resetMsg(), delay);
     userInput.addEventListener('input', () => {
         clearTimeout(errorMsgTimeout)
-        clientMsg.style.display = 'none'
-        clientMsg.innerText = ''
-        clientMsg.classList.remove('error')
+        resetMsg()
     })
     userInput.value = ''
 }
@@ -114,12 +110,16 @@ function displayWin() {
     clientMsg.innerText = 'You won!'
     clientMsg.style.display = 'block'
     clientMsg.classList.add('win')
-    userInput.addEventListener('input', () => {
-        clientMsg.style.display = 'none'
-        clientMsg.innerText = ''
-        clientMsg.classList.remove('win')
-    })
+    userInput.addEventListener('input', () => resetMsg())
+    newWordBtn.addEventListener('click', (event) => resetMsg())
     userInput.value = ''
+}
+
+function resetMsg() {
+    clientMsg.style.display = 'none'
+    clientMsg.innerText = ''
+    clientMsg.classList.remove('win')
+    clientMsg.classList.remove('error')
 }
 
 function getRandomInt(min, max) {
@@ -131,7 +131,7 @@ function getRandomInt(min, max) {
 getNewWord()
 
 userForm.addEventListener('submit', (event) => {
-    event.preventDefault()
+    event.preventDefault() // prevents page from refreshing when guess is submitted
     const guess = userInput.value.toUpperCase()
 
     // some checks to run on the guess
@@ -142,13 +142,15 @@ userForm.addEventListener('submit', (event) => {
     if (guess.length > 1 && guess === fullWord) {
         userInput.value = ''
         revealWord()
-        revealed = true
-        return displayWin() // instead of displayError, create new function that displays a message with green colors
+        return displayWin()
     }
 
     const letterIndexes = [] // all indexes where the guess was found
     fullWordArr.map((val, index, arr) => {
-        if (val.toUpperCase() === guess) letterIndexes.push(index)
+        if (val.toUpperCase() === guess) {
+            letterIndexes.push(index)
+            currentWordArr[index] = null
+        }
     })
 
     if (letterIndexes.length === 0) {
@@ -166,30 +168,31 @@ userForm.addEventListener('submit', (event) => {
     userInput.value = ''
     if (lettersFound === fullWord.length) {
         revealWord()
-        revealed = true
         return displayWin()
     }
     return
 })
 
-revealWordBtn.addEventListener('click', (event) => {
-    revealWord(fullWord)
-    revealed = true
-})
+revealWordBtn.addEventListener('click', (event) => revealWord())
 
-newWordBtn.addEventListener('click', (event) => {
-    getNewWord()
-    revealed = false
-})
+newWordBtn.addEventListener('click', (event) => getNewWord())
 
 wordHintBtn.addEventListener('click', (event) => {
     if (revealed) return
     if (hintsUsed >= hints) return displayError('Max hints used.', 5000)
-    if (hints - hintsUsed > fullWord.length - lettersFound) return displayError('The number of hints available is greater than the number of letters remaining.', 8000)
+    if (hints - hintsUsed >= fullWord.length - lettersFound) return displayError('The number of hints available is greater than or equl to the number of letters remaining.', 8000)
 
-    const randomLetterIndex = getRandomInt(0, fullWordArr.length - 1)
-    const letters = wordDisplay.querySelectorAll('.letter')
+    let randomLetterIndex = getRandomInt(0, fullWordArr.length - 1) // random letter index
+    const letters = wordDisplay.querySelectorAll('.letter') // all letter containers
+
+    // prevents overlapping hints
+    while (currentWordArr[randomLetterIndex] === null) randomLetterIndex = getRandomInt(0, fullWordArr.length - 1)
+
+    // letter chosen with the index from the container
     letters[randomLetterIndex].querySelector('letter').innerText = fullWordArr[randomLetterIndex]
+    currentWordArr[randomLetterIndex] = null // the letter was found, so change this to null
+
     hintsUsed++
-    hintsDisplay.innerText = `Hints: ${hints-hintsUsed}`
+    lettersFound++
+    hintsDisplay.innerText = `Hints: ${hints - hintsUsed}`
 })
