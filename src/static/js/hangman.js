@@ -63,7 +63,7 @@ function getNewWord() {
     userSubmitBtn.toggleAttribute('disabled', false) // enables the guess input submit button
 }
 
-function loadWord(word) {
+function loadWord() {
     let innerhtml = ''
     fullWordArr.forEach(letter => {
         innerhtml += `
