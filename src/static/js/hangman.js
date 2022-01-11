@@ -4,12 +4,10 @@ let currentWordArr = []
 let lettersFound = 0
 let revealed = false
 let hints = 0
-let hintsUsed = 0
 let wrongGuessed = []
 let guessed = []
 
-let tries = 0
-let maxTries = 0
+let tries = 6
 let difficulty = '' // coming soon!
 
 
@@ -22,6 +20,9 @@ const newWordBtn = document.getElementById('new-word')
 const wordHintBtn = document.getElementById('word-hint')
 const clientMsg = document.getElementById('msg')
 const hintsDisplay = document.getElementById('hints')
+const triesDisplay = document.getElementById('tries')
+
+// check difficulty here and update the number of tries
 
 function clearVariables() {
     fullWord = ''
@@ -30,7 +31,7 @@ function clearVariables() {
     revealed = false
     hints = 0
     hintsUsed = 0
-    tries = 0
+    tries = 6 //
     maxTries = 0
     difficulty = ''
     wrongGuessed = []
@@ -48,6 +49,8 @@ function getNewWord() {
         const wordLength = fullWord.length
         hints = wordLength < 6 ? 1 : wordLength < 10 ? 2 : wordLength < 14 ? 3 : wordLength < 16 ? 4 : 5 // calculates the max number of hints allowed
         hintsDisplay.innerText = `Hints: ${hints}`
+        // if(difficulty === 'hard') tries = 8 ... base the # of tries on the difficulty
+        triesDisplay.innerText = `Tries: ${tries}`
 
         loadWord(fullWord)
 
@@ -152,10 +155,12 @@ userForm.addEventListener('submit', (event) => {
             currentWordArr[index] = null
         }
     })
-
+    console.log(tries)
     if (letterIndexes.length === 0) {
         displayError('Incorrect guess.', 3000)
-        return wrongGuessed.push(guess)
+        // tries--
+        // triesDisplay.innerText = `Tries: ${tries}`
+    return wrongGuessed.push(guess)
     } // add the wrong guess to the arr
     else guessed.push(guess) // add the correct guess to the arr
 
@@ -179,8 +184,8 @@ newWordBtn.addEventListener('click', (event) => getNewWord())
 
 wordHintBtn.addEventListener('click', (event) => {
     if (revealed) return
-    if (hintsUsed >= hints) return displayError('Max hints used.', 5000)
-    if (hints - hintsUsed >= fullWord.length - lettersFound) return displayError('The number of hints available is greater than or equl to the number of letters remaining.', 8000)
+    if (hints <= 0) return displayError('Max hints used.', 5000)
+    if (hints >= fullWord.length - lettersFound) return displayError('The number of hints available is greater than or equl to the number of letters remaining.', 8000)
 
     let randomLetterIndex = getRandomInt(0, fullWordArr.length - 1) // random letter index
     const letters = wordDisplay.querySelectorAll('.letter') // all letter containers
@@ -192,7 +197,7 @@ wordHintBtn.addEventListener('click', (event) => {
     letters[randomLetterIndex].querySelector('letter').innerText = fullWordArr[randomLetterIndex]
     currentWordArr[randomLetterIndex] = null // the letter was found, so change this to null
 
-    hintsUsed++
+    hints--
     lettersFound++
-    hintsDisplay.innerText = `Hints: ${hints - hintsUsed}`
+    hintsDisplay.innerText = `Hints: ${hints}`
 })
