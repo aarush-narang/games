@@ -8,7 +8,7 @@ let wrongGuessed = []
 let guessed = []
 
 let tries = 6
-let difficulty = '' // coming soon!
+let difficulty = 'medium'
 
 
 const wordDisplay = document.getElementById('wordDisplay')
@@ -21,58 +21,72 @@ const wordHintBtn = document.getElementById('word-hint')
 const clientMsg = document.getElementById('msg')
 const hintsDisplay = document.getElementById('hints')
 const triesDisplay = document.getElementById('tries')
+const diffSelect = document.getElementById('diff-select')
 
 // check difficulty here and update the number of tries
 
 function clearVariables() {
     fullWord = ''
     fullWordArr = []
+    currentWordArr = []
     lettersFound = 0
     revealed = false
     hints = 0
     hintsUsed = 0
     tries = 6 //
     maxTries = 0
-    difficulty = ''
     wrongGuessed = []
     guessed = []
 }
 
-function getNewWord() {
+function loadVariables(word, diff) {
+    const wordLength = word.length
+    fullWord = word
+    fullWordArr = word.split('')
+    currentWordArr = [...fullWordArr]
+    hints = wordLength < 6 ? 1 : wordLength < 10 ? 2 : wordLength < 14 ? 3 : wordLength < 16 ? 4 : 5 // calculates the max number of hints allowed
+
+    if (diff === 'easy') tries = 4
+    else if (diff === 'medium') tries = 5
+    else if (diff === 'hard') tries = 6
+    else if (diff === 'impossible') tries = 8
+    else tries = 5
+    difficulty = diff
+
+    return { hints, tries }
+}
+
+function getNewWord(diff='medium') {
     clearVariables() // make sure no previous word/variables are stored
     const wordReq = new XMLHttpRequest()
     wordReq.addEventListener('load', (event) => {
-        fullWord = event.target.responseText
-        fullWordArr = fullWord.split('')
-        currentWordArr = [...fullWordArr]
+        const vals = loadVariables(event.target.responseText, difficulty)
 
-        const wordLength = fullWord.length
-        hints = wordLength < 6 ? 1 : wordLength < 10 ? 2 : wordLength < 14 ? 3 : wordLength < 16 ? 4 : 5 // calculates the max number of hints allowed
-        hintsDisplay.innerText = `Hints: ${hints}`
-        // if(difficulty === 'hard') tries = 8 ... base the # of tries on the difficulty
-        triesDisplay.innerText = `Tries: ${tries}`
+        hintsDisplay.innerText = `Hints: ${vals.hints}`
+        triesDisplay.innerText = `Tries: ${vals.tries}`
 
         loadWord(fullWord)
 
         console.log(fullWord)
+        console.log(difficulty)
         console.log(hints)
     })
     wordReq.addEventListener('error', (event) => {
         console.log(event)
     })
-    wordReq.open('GET', '/hangman/randomWord')
+    wordReq.open('GET', `/hangman/randomWord?diff=${diff}`)
     wordReq.send()
     userInput.toggleAttribute('disabled', false) // enables the guess input field
     userSubmitBtn.toggleAttribute('disabled', false) // enables the guess input submit button
 }
 
-function loadWord() {
+function loadWord(word) {
     let innerhtml = ''
     fullWordArr.forEach(letter => {
         innerhtml += `
             <div class="letter">
                 <letter></letter>
-                <div class="letter-underline"></div>
+                <span class="letter-underline"></span>
             </div>
         `
     });
@@ -131,7 +145,7 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-getNewWord()
+getNewWord(difficulty)
 
 userForm.addEventListener('submit', (event) => {
     event.preventDefault() // prevents page from refreshing when guess is submitted
@@ -160,7 +174,7 @@ userForm.addEventListener('submit', (event) => {
         displayError('Incorrect guess.', 3000)
         // tries--
         // triesDisplay.innerText = `Tries: ${tries}`
-    return wrongGuessed.push(guess)
+        return wrongGuessed.push(guess)
     } // add the wrong guess to the arr
     else guessed.push(guess) // add the correct guess to the arr
 
@@ -200,4 +214,13 @@ wordHintBtn.addEventListener('click', (event) => {
     hints--
     lettersFound++
     hintsDisplay.innerText = `Hints: ${hints}`
+})
+
+diffSelect.addEventListener('change', (event) => { // load new word based on difficulty
+    difficulty = event.target.value.toLowerCase()
+
+    if (difficulty === 'easy') getNewWord(difficulty) // 6 letters or less and 4 tries
+    else if (difficulty === 'medium') getNewWord(difficulty) // 7 to 9 (incl.) letters and 5 tries
+    else if (difficulty === 'hard') getNewWord(difficulty) // 10 to 12 (incl.) letters and 6 tries
+    else if (difficulty === 'impossible') getNewWord(difficulty) // 13 and above letters and 8 tries
 })

@@ -1,4 +1,5 @@
 import random
+from flask import request
 
 __name__ = 'main' # have to change the name for some reason otherwise it wont import
 
@@ -24,6 +25,7 @@ def hangman():
 
 @main_router.get('/hangman/randomWord')
 def getHangmanWord():
+    print(request.args.get('diff'))
     with open('./static/other/allwords.txt') as f:
         words = list(f)
 

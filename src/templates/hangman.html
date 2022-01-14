@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +10,7 @@
     <script type="text/javascript" src="{{ url_for('static', filename='js/hangman.js') }}" defer></script>
     <title>Hangman</title>
 </head>
+
 <body>
     <div>
         <button id="return-home" onclick="window.location = '/'">Return Home</button>
@@ -26,6 +28,14 @@
                 <button id="reveal-word" class="nav-btn btn" type="button">Reveal Word</button>
                 <button id="new-word" class="nav-btn btn" type="button">Get new word</button>
                 <button id="word-hint" class="nav-btn btn" type="button">Hint</button>
+                <select class="nav-btn btn" id="diff-select">
+                    <optgroup label="Choose a difficulty">
+                        <option>Easy</option>
+                        <option selected>Medium</option>
+                        <option>Hard</option>
+                        <option>Impossible</option>
+                    </optgroup>
+                </select>
                 <!-- hint (random letter, max 2?) -->
             </div>
         </div>
@@ -34,17 +44,20 @@
             <div id="user-input-container">
                 <!-- input for letters/word guesses -->
                 Guess Here:
-                <form id="user-guess-form" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" >
+                <form id="user-guess-form" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
                     <input id="user-input" type="text">
                     <!-- disable the user input when they reveal -->
                     <button id="user-input-submit" type="submit">Guess</button>
                 </form>
             </div>
-            <div id="msg"> <!-- add red border and lighter red bkg color -->
-                the dog jumped over the fox and the cat went under the bridge the dog jumped over the fox and the cat went under the bridge
+            <div id="msg">
+                <!-- add red border and lighter red bkg color -->
+                the dog jumped over the fox and the cat went under the bridge the dog jumped over the fox and the cat
+                went under the bridge
             </div>
             <!-- clicking on the error dismisses it, also create an x on the top right of the error which dismisses and if they start typing again it dismisses -->
         </div>
     </div>
 </body>
+
 </html>

@@ -52,12 +52,15 @@
 letter {
   margin: 0 5px 0 5px;
   font-family: Urbanist;
-  font-size: 150%;
+  font-size: calc(.5rem + 1vw);
 }
 
 .letter-underline {
+  display: block;
   margin: 0 5px 0 5px;
-  width: 40px;
+  min-width: 10px;
+  width: 3vw;
+  max-width: 40px;
   height: 2px;
   background-color: black;
 }
@@ -162,3 +165,20 @@ letter {
     2px 4px 6px 4px #a2e491e7;
   transform: translateY(4px) translateX(2px);
 }
+
+/* difficulty select */
+#diff-select {
+  transition: 300ms ease;
+  border: none;
+  outline: none;
+  /* add min/max width and height */
+  width: auto; 
+  height: auto;
+
+  padding: 0 10px 0 10px;
+}
+
+
+/* #diff-select:focus {
+  border: 1px solid black;
+} */
