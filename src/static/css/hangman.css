@@ -26,13 +26,11 @@
 #wordDisplay {
   display: flex;
   flex-direction: row;
-  /* fix horizontal scrolling issue with smaller screens 
-  by breaking the word into multiple lines */
   justify-content: center;
   width: 100%;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 550px) {
   #nav-buttons {
     display: flex;
     flex-direction: column;
@@ -65,18 +63,12 @@ letter {
   background-color: black;
 }
 
-#user-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 #user-input-container {
   display: flex;
   justify-content: center;
   align-items: center;
 
+  min-width: 340px;
   margin-top: 20px;
   font-size: 15px;
   font-family: Urbanist;
@@ -141,44 +133,30 @@ letter {
   word-wrap: break-word;
   padding: 8px 10px 8px 10px;
   border-radius: 6px;
-
+  cursor: pointer;
   transition: 200ms ease;
 }
 
 .error {
   background-color: rgb(230, 161, 161);
-  box-shadow: 0 0 0 2px rgb(189, 117, 117), 0 0 0 4px rgb(197, 110, 110),
-    6px 8px 10px 4px #e07d7de7;
+  box-shadow: 0 0 0 4px rgb(197, 110, 110), 6px 8px 10px 4px #e07d7de7;
 }
 .win {
   background-color: rgb(169, 230, 161);
-  box-shadow: 0 0 0 2px rgb(96, 163, 119), 0 0 0 4px rgb(156, 197, 110),
-    6px 8px 10px 4px #a2e491e7;
+  box-shadow: 0 0 0 4px rgb(96, 163, 119), 6px 8px 10px 4px #a2e491e7;
 }
 .error:hover {
-  box-shadow: 0 0 0 2px rgb(189, 117, 117), 0 0 0 4px rgb(197, 110, 110),
-    2px 4px 6px 4px #e07d7de7;
+  box-shadow: 0 0 0 4px rgb(197, 110, 110), 2px 4px 6px 4px #e07d7de7;
   transform: translateY(4px) translateX(2px);
 }
 .win:hover {
-  box-shadow: 0 0 0 2px rgb(96, 163, 119), 0 0 0 4px rgb(156, 197, 110),
-    2px 4px 6px 4px #a2e491e7;
+  box-shadow: 0 0 0 4px rgb(96, 163, 119), 6px 8px 10px 4px #a2e491e7;
   transform: translateY(4px) translateX(2px);
 }
 
 /* difficulty select */
 #diff-select {
-  transition: 300ms ease;
   border: none;
   outline: none;
-  /* add min/max width and height */
-  width: auto; 
-  height: auto;
-
   padding: 0 10px 0 10px;
 }
-
-
-/* #diff-select:focus {
-  border: 1px solid black;
-} */

@@ -34,29 +34,20 @@
                         <option selected>Medium</option>
                         <option>Hard</option>
                         <option>Impossible</option>
+                        <option>Random</option>
                     </optgroup>
                 </select>
-                <!-- hint (random letter, max 2?) -->
             </div>
         </div>
         <div id="wordDisplay"></div>
-        <div id="user-container">
-            <div id="user-input-container">
-                <!-- input for letters/word guesses -->
-                Guess Here:
-                <form id="user-guess-form" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
-                    <input id="user-input" type="text">
-                    <!-- disable the user input when they reveal -->
-                    <button id="user-input-submit" type="submit">Guess</button>
-                </form>
-            </div>
-            <div id="msg">
-                <!-- add red border and lighter red bkg color -->
-                the dog jumped over the fox and the cat went under the bridge the dog jumped over the fox and the cat
-                went under the bridge
-            </div>
-            <!-- clicking on the error dismisses it, also create an x on the top right of the error which dismisses and if they start typing again it dismisses -->
+        <div id="user-input-container">
+            Guess Here:
+            <form id="user-guess-form" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                <input id="user-input" type="text">
+                <button id="user-input-submit" type="submit">Guess</button>
+            </form>
         </div>
+        <div id="msg"></div>
     </div>
 </body>
 
