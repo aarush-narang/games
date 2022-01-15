@@ -10,6 +10,7 @@ let guessed = []
 let tries = 6
 let difficulty = 'medium'
 
+// add image of hangman, implement # of tries, prevent overlapping hints and add styles to hint display
 
 const wordDisplay = document.getElementById('wordDisplay')
 const userForm = document.getElementById('user-guess-form')
