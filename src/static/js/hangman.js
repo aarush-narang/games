@@ -9,7 +9,6 @@
     let guessed = []
     let tries = 0
 
-    // remove console log of the word,
     // word display still does not show properly on screens smaller than about 300px with more than 13-14 chars
 
     const wordDisplay = document.getElementById('wordDisplay')
@@ -47,7 +46,7 @@
         fullWordArr = word.split('')
         currentWordArr = [...fullWordArr]
 
-        // hints and tries calculations can be changed fairly easily
+        // hints and tries calculations can be changed easily
         hints = wordLength < 6 ? 2 : wordLength < 10 ? 3 : wordLength < 14 ? 4 : wordLength < 16 ? 5 : 5 // calculates the max number of hints allowed
         tries = wordLength <= 5 ? 6 : 10 // calculates tries
 
@@ -67,8 +66,6 @@
             triesDisplay.innerText = `Tries: ${vals.tries}`
 
             loadWord(fullWord)
-
-            console.log(fullWord) // log of word
         })
         wordReq.addEventListener('error', (event) => {
             console.log(event)
