@@ -16,9 +16,6 @@
         <button id="return-home" onclick="window.location = '/'">Return Home</button>
     </div>
     <div id="container">
-        <div id="hangman">
-            <!-- create shapes to create the image of the hangman when they input an incorrect letter -->
-        </div>
         <div id="nav">
             <div id="nav-text">
                 <div id="hints"></div>
@@ -30,8 +27,8 @@
                 <button id="word-hint" class="nav-btn btn" type="button">Hint</button>
                 <select class="nav-btn btn" id="diff-select">
                     <optgroup label="Choose a difficulty">
-                        <option>Easy</option>
-                        <option selected>Medium</option>
+                        <option selected>Easy</option>
+                        <option>Medium</option>
                         <option>Hard</option>
                         <option>Impossible</option>
                         <option>Random</option>
@@ -41,13 +38,14 @@
         </div>
         <div id="wordDisplay"></div>
         <div id="user-input-container">
-            Guess Here:
+            <div id="user-input-text">Guess Here:</div>
             <form id="user-guess-form" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
                 <input id="user-input" type="text">
                 <button id="user-input-submit" type="submit">Guess</button>
             </form>
         </div>
         <div id="msg"></div>
+        <div id="hangman"></div>
     </div>
 </body>
 
