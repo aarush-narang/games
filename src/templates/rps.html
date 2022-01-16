@@ -1,18 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/rps.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/rps.js') }}" defer></script>
     <title>Rock Paper Scissors</title>
 </head>
+
 <body>
+
     <div>
         <button id="return-home" onclick="window.location = '/'">Return Home</button>
     </div>
     <div id="container">
-        
+        <div id="nav">
+            <div id="nav-buttons">
+                <select class="nav-btn btn" id="diff-select">
+                    <optgroup label="Choose a difficulty">
+                        <option selected>Easy</option>
+                        <option>Medium</option>
+                        <option>Hard</option>
+                        <option>Impossible</option>
+                        <option>Random</option>
+                    </optgroup>
+                </select>
+            </div>
+        </div>
+        <div id="rps-choices">
+            <button class="rps-choice btn">Rock</button>
+            <button class="rps-choice btn">Paper</button>
+            <button class="rps-choice btn">Scissors</button>
+        </div>
+        <div id="msg"></div>
     </div>
 </body>
+
 </html>
