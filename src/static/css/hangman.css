@@ -1,27 +1,5 @@
-#container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 10px;
-  padding: 20px;
-}
-
 #nav {
   padding: 50px 0px 50px 0px;
-}
-
-.nav-btn {
-  min-width: 120px;
-  width: 15vw;
-  max-width: 160px;
-  min-height: 35px;
-  height: 5vh;
-  max-height: 45px;
-
-  margin-top: 30px;
-  margin-right: 5px;
-  margin-left: 5px;
 }
 
 #wordDisplay {
@@ -122,42 +100,7 @@ letter {
   box-shadow: 1px 2px 3px 0px #76522be7;
 }
 
-#msg {
-  display: none;
 
-  font-size: 16px;
-  font-family: Urbanist;
-  color: black;
-  text-align: center;
-
-  margin-top: 20px;
-  min-width: 150px;
-  width: fit-content;
-  max-width: 250px;
-  height: fit-content;
-  word-wrap: break-word;
-  padding: 8px 10px 8px 10px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: 200ms ease;
-}
-
-.error {
-  background-color: rgb(230, 161, 161);
-  box-shadow: 0 0 0 4px rgb(197, 110, 110), 6px 8px 10px 4px #e07d7de7;
-}
-.win {
-  background-color: rgb(169, 230, 161);
-  box-shadow: 0 0 0 4px rgb(96, 163, 119), 6px 8px 10px 4px #a2e491e7;
-}
-.error:hover {
-  box-shadow: 0 0 0 4px rgb(197, 110, 110), 2px 4px 6px 4px #e07d7de7;
-  transform: translateY(4px) translateX(2px);
-}
-.win:hover {
-  box-shadow: 0 0 0 4px rgb(96, 163, 119), 6px 8px 10px 4px #a2e491e7;
-  transform: translateY(4px) translateX(2px);
-}
 
 /* difficulty select */
 #diff-select {

@@ -66,6 +66,8 @@
             triesDisplay.innerText = `Tries: ${vals.tries}`
 
             loadWord(fullWord)
+
+            console.log(fullWord)
         })
         wordReq.addEventListener('error', (event) => {
             console.log(event)
@@ -165,7 +167,8 @@
         })
 
         if (letterIndexes.length === 0) {
-            hangman.style.backgroundImage = `url("/static/images/hangman-pictures/hangman-${wrongGuessed.length + 1}.png")`
+            hangman.style.backgroundImage = `url("/static/images/hangman-pictures/hangman-${wrongGuessed.length + 1}.png")` // changes the hangman image
+            
             tries--
             triesDisplay.innerText = `Tries: ${tries}`
 
@@ -181,7 +184,6 @@
         else guessed.push(guess) // add the correct guess to the arr
 
         const letters = wordDisplay.querySelectorAll('.letter')
-
         letterIndexes.forEach(index => {
             letters[index].querySelector('letter').innerText = fullWordArr[index]
             lettersFound++
@@ -190,6 +192,11 @@
             revealWord()
             return displayMsg('You got the word!', 0, 'win')
         }
+
+        // reduces the number of hints available as they get more letters (2 letters remaining = 1 hint, 3 letters remaining = 2 hints, etc.)
+        if (hints >= fullWord.length - lettersFound) hints -= letterIndexes.length
+        hintsDisplay.innerText = `Hints: ${hints}`
+
         return
     })
 
@@ -219,6 +226,7 @@
 
         hints--
         lettersFound++
+
         hintsDisplay.innerText = `Hints: ${hints}`
     })
 
