@@ -81,7 +81,7 @@
         }
     }
 
-    function updateScore() { // display tries somehow
+    function updateScore() {
         const userScore = document.getElementById('score-user')
         const computerScore = document.getElementById('score-computer')
         const storageScore = JSON.parse(window.localStorage.getItem('rpsscore'))
