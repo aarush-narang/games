@@ -10,7 +10,7 @@
 
     // reload score
     function reloadScore() {
-        const storage = window.localStorage.getItem('score') || ''
+        const storage = window.localStorage.getItem('tttscore') || ''
         if (storage !== '') {
             const score = JSON.parse(storage)
             x = score.x || 0
@@ -44,7 +44,7 @@
             o++
             scoreBoard.innerText = `(X) ${x} - ${o} (O)`
         }
-        window.localStorage.setItem('score', JSON.stringify({
+        window.localStorage.setItem('tttscore', JSON.stringify({
             x,
             o
         }))
@@ -202,7 +202,7 @@
     // reset score button
     const resetScoreBtn = document.getElementById('reset-score-btn')
     resetScoreBtn.addEventListener('click', (event) => {
-        window.localStorage.setItem('score', '')
+        window.localStorage.setItem('tttscore', '')
         x = 0
         y = 0
         reloadScore()

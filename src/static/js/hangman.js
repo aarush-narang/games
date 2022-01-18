@@ -75,6 +75,9 @@
         wordReq.open('GET', `/hangman/randomWord?diff=${diff}`)
         wordReq.send()
 
+        userInput.style.cursor = 'text'
+        userSubmitBtn.style.cursor = 'pointer'
+
         userInput.toggleAttribute('disabled', false) // enables the guess input field
         userSubmitBtn.toggleAttribute('disabled', false) // enables the guess input submit button
     }
@@ -107,6 +110,8 @@
 
         userInput.toggleAttribute('disabled', true) // disables the guess input field
         userSubmitBtn.toggleAttribute('disabled', true) // disables the guess input submit button
+        userInput.style.cursor = 'not-allowed'
+        userSubmitBtn.style.cursor = 'not-allowed'
     }
 
     function displayMsg(msg = '', delay = 5000, type = 'error') {
@@ -133,12 +138,6 @@
         clientMsg.innerText = ''
         clientMsg.classList.remove('win')
         clientMsg.classList.remove('error')
-    }
-
-    function getRandomInt(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
     getNewWord(difficulty)
@@ -194,7 +193,7 @@
         }
 
         // reduces the number of hints available as they get more letters (2 letters remaining = 1 hint, 3 letters remaining = 2 hints, etc.)
-        if (hints >= fullWord.length - lettersFound) hints -= letterIndexes.length
+        if (hints >= fullWord.length - lettersFound) hints = fullWord.length - lettersFound - 1 // the "-1" represents the number of letters remaining (1) until the hints counter = 0
         hintsDisplay.innerText = `Hints: ${hints}`
 
         return

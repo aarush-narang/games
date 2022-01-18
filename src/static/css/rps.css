@@ -1,0 +1,188 @@
+#nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0px 50px 0px;
+}
+
+#nav-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#diff-select {
+    border: none;
+    outline: none;
+    padding: 0 0 0 20px;
+}
+
+#rps-choices {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+.rps-choice {
+    border: none;
+    outline: none;
+    font-family: Urbanist;
+    font-weight: bold;
+    color: black;
+
+    border-radius: 5px;
+
+    background-color: #ddbdae;
+
+    box-shadow: 6px 8px 8px 1px #76522be7;
+    transition: 250ms ease;
+
+    cursor: pointer;
+
+    min-width: 150px;
+    width: 20vw;
+    max-width: 200px;
+    min-height: 35px;
+    height: 5vh;
+    max-height: 45px;
+
+    margin-top: 30px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.btn-effect:hover {
+    background-color: #b3ddae;
+    box-shadow: 6px 8px 6px 1px #37762be7;
+    transform: translateX(1px) translateY(2px);
+}
+
+.btn-effect:active {
+    background-color: #a7dda1;
+    box-shadow: 3px 4px 4px 0px #37762be7;
+    transform: translateX(2px) translateY(4px);
+}
+
+.pressed {
+    background-color: #a7dda1;
+    box-shadow: 3px 4px 4px 0px #37762be7;
+    transform: translateX(2px) translateY(4px);
+}
+
+.disabled {
+    cursor: not-allowed;
+}
+
+@media screen and (max-width: 590px) {
+    #nav-buttons {
+        flex-direction: column;
+    }
+
+    .nav-btn {
+        min-width: 120px;
+        width: 50vw;
+        max-width: 350px;
+    }
+
+    #rps-choices {
+        flex-direction: column;
+    }
+
+    .rps-choice {
+        min-width: 120px;
+        width: 70vw;
+        max-width: 400px;
+    }
+}
+
+#score {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    margin-left: 48px;
+}
+
+#score div {
+    font-size: 1.9rem;
+    font-family: Urbanist;
+    text-align: center;
+    margin: 0 4px 0 4px;
+    cursor: default;
+}
+
+/* hover tooltips */
+#score-user {
+    display: flex;
+}
+
+#score-computer {
+    display: flex;
+}
+
+#score-user::before {
+    display: flex;
+    align-items: center;
+    position: relative;
+    content: 'This is your score ⇨';
+
+    /* delay here is how long it takes while hovering to hide the tooltip */
+    transition: opacity 160ms ease-in-out 0.3s;
+
+    background-color: #DDBDAE;
+    border-radius: 15px;
+    font-size: 8pt;
+    font-weight: bolder;
+
+    min-width: 50px;
+    width: max-content;
+    height: 20px;
+
+    padding: 5px 10px 5px 10px;
+    opacity: 0;
+    top: 4px;
+    margin-right: 10px;
+}
+
+#score-user:hover::before {
+    /* delay here is how long it takes while hovering to show the tooltip */
+    transition: opacity 180ms ease-in-out 1.3s;
+    opacity: 100;
+}
+
+#score-computer::after {
+    display: flex;
+    align-items: center;
+    position: relative;
+    content: '⇦ This is the computer\'s score';
+
+    /* delay here is how long it takes while hovering to hide the tooltip */
+    transition: opacity 160ms ease-in-out 0.3s;
+
+    background-color: #DDBDAE;
+    border-radius: 15px;
+    font-size: 8pt;
+    font-weight: bolder;
+
+    min-width: 50px;
+    width: max-content;
+    height: 20px;
+
+    padding: 5px 10px 5px 10px;
+    opacity: 0;
+    top: 4px;
+    margin-left: 10px;
+}
+
+#score-computer:hover::after {
+    /* delay here is how long it takes while hovering to show the tooltip */
+    transition: opacity 180ms ease-in-out 1.3s;
+    opacity: 100;
+}

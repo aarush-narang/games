@@ -118,6 +118,11 @@ body {
     box-shadow: 0 0 0 4px rgb(96, 163, 119), 6px 8px 10px 4px #a2e491e7;
 }
 
+.warning {
+    background-color: rgb(230, 217, 161);
+    box-shadow: 0 0 0 4px rgb(227, 196, 97), 6px 8px 10px 4px #f3ecace7;
+}
+
 .error:hover {
     box-shadow: 0 0 0 4px rgb(197, 110, 110), 2px 4px 6px 4px #e07d7de7;
     transform: translateY(4px) translateX(2px);
@@ -125,5 +130,10 @@ body {
 
 .win:hover {
     box-shadow: 0 0 0 4px rgb(96, 163, 119), 6px 8px 10px 4px #a2e491e7;
+    transform: translateY(4px) translateX(2px);
+}
+
+.warning:hover {
+    box-shadow: 0 0 0 4px rgb(227, 196, 97), 6px 8px 10px 4px #f3ecace7;
     transform: translateY(4px) translateX(2px);
 }
