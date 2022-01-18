@@ -113,6 +113,7 @@
 #score div {
     font-size: 1.9rem;
     font-family: Urbanist;
+    font-weight: bold;
     text-align: center;
     margin: 0 4px 0 4px;
     cursor: default;
@@ -136,7 +137,7 @@
     /* delay here is how long it takes while hovering to hide the tooltip */
     transition: opacity 160ms ease-in-out 0.3s;
 
-    background-color: #DDBDAE;
+    background-color: #78acac;
     border-radius: 15px;
     font-size: 8pt;
     font-weight: bolder;
@@ -166,7 +167,7 @@
     /* delay here is how long it takes while hovering to hide the tooltip */
     transition: opacity 160ms ease-in-out 0.3s;
 
-    background-color: #DDBDAE;
+    background-color: #78acac;
     border-radius: 15px;
     font-size: 8pt;
     font-weight: bolder;
