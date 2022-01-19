@@ -84,6 +84,7 @@
     function updateScore() {
         const userScore = document.getElementById('score-user')
         const computerScore = document.getElementById('score-computer')
+        if (!window.localStorage.getItem('rpsscore')) window.localStorage.setItem('rpsscore', '{"wins":0,"losses":0,"ties":0}')
         const storageScore = JSON.parse(window.localStorage.getItem('rpsscore'))
 
         userScore.innerText = storageScore.wins
