@@ -5,14 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
-    <title>Guess (User)</title>
+    <title>Guess (You guess)</title>
 </head>
 <body>
     <div>
         <button id="return-home" onclick="window.location = '/'">Return Home</button>
     </div>
     <div id="container">
-        
+        <div id="nav">
+            <div id="nav-buttons">
+                <button id="reveal-num" class="nav-btn btn" type="button">Reveal number</button>
+                <button id="new-num" class="nav-btn btn" type="button">Get new number</button>
+                <div id="num-range">
+                    <input id="min-range">
+                    <input id="max-range">
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
