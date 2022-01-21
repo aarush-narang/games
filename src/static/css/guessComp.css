@@ -1,0 +1,125 @@
+#nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#nav-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+#settings {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#num-range {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+
+    font-family: Urbanist;
+    font-size: 20px;
+    font-weight: bold;
+}
+#play-btn {
+    min-width: 150px;
+    width: 27vw;
+    max-width: 350px;
+    min-height: 35px;
+    height: 5vh;
+    max-height: 45px;
+
+    margin-top: 30px;
+    margin-right: 5px;
+    margin-left: 5px;
+/* add some fancy styles to play button */
+}
+#min-range, #max-range {
+    min-width: 140px;
+    width: 15vw;
+    max-width: 250px;
+    height: 20px;
+    padding: 12px;
+    margin: 10px;
+
+    border: none;
+    outline: none;
+    border-radius: 10px;
+
+    background-color: #8ab3b3;
+    font-size: 20px;
+    font-family: Urbanist;
+    font-weight: bold;
+    color: rgb(4, 65, 65);
+    letter-spacing: 1px;
+}
+#min-range::placeholder, #max-range::placeholder {
+    color: hsla(180, 20%, 45%, 1);
+}
+
+@media screen and (max-width: 450px) {
+    #num-range {
+        flex-direction: column;
+    }
+}
+
+#guess-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0 20px 0;
+}
+#guess-text {
+    font-family: Urbanist;
+    color: rgb(4, 65, 65);
+    font-size: 20px;
+    font-weight: bold;
+}
+#guess-input {
+    width: 160px;
+    aspect-ratio: 5 / 1;
+
+    padding: 12px;
+    margin-top: 10px;
+    letter-spacing: 0.7px;
+    
+    border: none;
+    outline: none;
+    border-radius: 10px;
+
+    background-color: #8ab3b3;
+    font-size: 32px;
+    font-family: Urbanist;
+    font-weight: bold;
+    text-align: center;
+    color: rgb(4, 65, 65);
+}
+#guess-input::placeholder {
+    color: hsla(180, 20%, 45%, 1);
+}
+
+.btn-effect:hover {
+    background-color: #b3ddae;
+    box-shadow: 6px 8px 6px 1px #37762be7;
+    transform: translateX(1px) translateY(2px);
+}
+.btn-effect:active {
+    background-color: #a7dda1;
+    box-shadow: 3px 4px 4px 0px #37762be7;
+    transform: translateX(2px) translateY(4px);
+}
+.pressed {
+    pointer-events: none;
+    background-color: #a7dda1;
+    box-shadow: 3px 4px 4px 0px #37762be7;
+    transform: translateX(2px) translateY(4px);
+}
+.disabled {
+    cursor: not-allowed;
+}
