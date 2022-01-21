@@ -136,7 +136,7 @@
     function resetMsg() {
         clientMsg.style.display = 'none'
         clientMsg.innerText = ''
-        clientMsg.classList.remove('win')
+        clientMsg.classList.remove('success')
         clientMsg.classList.remove('error')
     }
 
@@ -154,7 +154,7 @@
         else if (guessed.includes(guess) || wrongGuessed.includes(guess)) return displayMsg(`You\'ve already guessed "${guess}"!`, 6000, 'error')
         else if (guess.length > 1 && guess === fullWord) {
             revealWord()
-            return displayMsg('You got the word!', 0, 'win')
+            return displayMsg('You got the word!', 0, 'success')
         }
 
         const letterIndexes = [] // all indexes where the guess was found
@@ -189,7 +189,7 @@
         })
         if (lettersFound === fullWord.length) {
             revealWord()
-            return displayMsg('You got the word!', 0, 'win')
+            return displayMsg('You got the word!', 0, 'success')
         }
 
         // reduces the number of hints available as they get more letters (2 letters remaining = 1 hint, 3 letters remaining = 2 hints, etc.)

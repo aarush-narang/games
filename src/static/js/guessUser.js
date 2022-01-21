@@ -53,7 +53,7 @@
     function resetMsg() {
         clientMsg.style.display = 'none'
         clientMsg.innerText = ''
-        clientMsg.classList.remove('win')
+        clientMsg.classList.remove('success')
         clientMsg.classList.remove('error')
         clientMsg.classList.remove('warning')
     }
@@ -92,7 +92,7 @@
 
     disable(guessBtn, guessInput, revealNumber) // disable the guessing area before they enter a range
 
-    window.addEventListener('keypress', () => {
+    window.addEventListener('keypress', () => { // if they type text and the guess input isnt focused, focus it
         if (guessInput.classList.contains('disabled')) {
             if (minInput.value !== '') {
                 maxInput.focus()
@@ -102,17 +102,19 @@
         } else {
             guessInput.focus()
         }
-    }) // if they type text and the guess input isnt focused, focus it
+    })
 
     settingsForm.addEventListener('submit', (event) => { // when the range is entered and it passes the tests, enable the guessing area and disable the range area
         event.preventDefault()
+        if (!minInput.value) return displayMsg('Please enter a minimum value.', 5000, 'error')
+        else if (!maxInput.value) return displayMsg('Please enter a maximum value.', 5000, 'error')
+
         minVal = Number(minInput.value)
         maxVal = Number(maxInput.value)
 
-        if (!minVal && minVal !== 0) return displayMsg('Please enter a minimum value.', 5000, 'error')
-        else if (!maxVal && maxVal !== 0) return displayMsg('Please enter a maximum value.', 5000, 'error')
-        else if (minVal > maxVal) return displayMsg('The minimum value has to be greater than the maximum value.', 8000, 'warning')
+        if (minVal > maxVal) return displayMsg('The minimum value has to be greater than the maximum value.', 8000, 'warning')
         else if (minVal === maxVal) return displayMsg('Your minimum value cannot equal your maximum value.', 5000, 'error')
+
         disable(minInput, maxInput, playBtn)
         playBtn.classList.add('pressed')
 
@@ -122,7 +124,7 @@
         displayMsg('Choosing a number...', 1500, 'warning')
 
         setTimeout(() => {
-            displayMsg('I got my number! You can try guessing in the guess box above.', 10000, 'warning')
+            displayMsg('I got my number! You can try guessing in the guess box above.', 10000, 'success')
             enable(guessBtn, guessInput, revealNumber)
 
             randomNumber = getRandomInt(minVal, maxVal)
@@ -145,7 +147,7 @@
             displayMsg(`Wrong number, Try again!\n(My number is between ${minGuess} and ${maxGuess})`, 5000, 'error')
         } else if (guess === randomNumber) { // If they do get the number and increase tries and disable the guessing area
             tries++
-            displayMsg(`You got the number in ${tries} tries!`, 0, 'win')
+            displayMsg(`You got the number in ${tries} tries!`, 0, 'success')
             disable(guessBtn, guessInput, revealNumber)
             guessInput.value = guess
         }
@@ -155,6 +157,7 @@
 
     revealNumber.addEventListener('click', (event) => { // When they click the reveal number button, disable guess area in case it isnt already and display the number
         displayMsg(`Your number was ${randomNumber}.`, 0, 'error')
+        guessInput.value = randomNumber
         disable(guessBtn, guessInput, revealNumber)
     })
 })()

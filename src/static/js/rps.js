@@ -22,7 +22,7 @@
     function resetMsg() {
         clientMsg.style.display = 'none'
         clientMsg.innerText = ''
-        clientMsg.classList.remove('win')
+        clientMsg.classList.remove('success')
         clientMsg.classList.remove('error')
         clientMsg.classList.remove('warning')
     }
@@ -148,7 +148,7 @@
                 const rpsscore = JSON.parse(window.localStorage.getItem('rpsscore'))
 
                 if (winner === 'user') { // update score here in localstorage
-                    displayMsg(`I chose ${computerChoice} and you chose ${clientChoice}, you won!`, 0, 'win')
+                    displayMsg(`I chose ${computerChoice} and you chose ${clientChoice}, you won!`, 0, 'success')
                     rpsscore.wins += 1
                 } else if (winner === 'computer') {
                     displayMsg(`I chose ${computerChoice} and you chose ${clientChoice}, you lost.`, 0, 'error')

@@ -113,7 +113,7 @@ body {
     box-shadow: 0 0 0 4px rgb(197, 110, 110), 6px 8px 10px 4px #e07d7de7;
 }
 
-.win {
+.success {
     background-color: rgb(169, 230, 161);
     box-shadow: 0 0 0 4px rgb(96, 163, 119), 6px 8px 10px 4px #a2e491e7;
 }
@@ -128,7 +128,7 @@ body {
     transform: translateY(4px) translateX(2px);
 }
 
-.win:hover {
+.success:hover {
     box-shadow: 0 0 0 4px rgb(96, 163, 119), 6px 8px 10px 4px #a2e491e7;
     transform: translateY(4px) translateX(2px);
 }
