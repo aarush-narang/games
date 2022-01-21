@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/guessUser.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/guessUser.js') }}" defer></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/util.js') }}"></script>
     <title>Guess (You guess)</title>
 </head>
+
 <body>
     <div>
         <button id="return-home" onclick="window.location = '/'">Return Home</button>
@@ -15,13 +20,26 @@
         <div id="nav">
             <div id="nav-buttons">
                 <button id="reveal-num" class="nav-btn btn" type="button">Reveal number</button>
-                <button id="new-num" class="nav-btn btn" type="button">Get new number</button>
-                <div id="num-range">
-                    <input id="min-range">
-                    <input id="max-range">
-                </div>
+                <button id="new-num" class="nav-btn btn" type="button">Restart</button>
             </div>
         </div>
+        <div id="settings">
+            <div id="num-range">
+                <input id="min-range" type="number" placeholder="1" maxlength="9" oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                <div style="color: rgb(4, 65, 65);">to</div>
+                <input id="max-range" type="number" placeholder="100" maxlength="9" oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+            </div>
+            <button id="play-btn" class="btn btn-effect">Play</button>
+        </div>
+        <div id="guess-area">
+            <div id="guess-text">Guess Here:</div>
+            <form id="guess-form">
+                <input id="guess-input" type="number" inputmode="numeric" placeholder="1" maxlength="9" oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                <button id="guess-num" class="btn nav-btn" type="submit">Guess</button>
+            </form>
+        </div>
+        <div id="msg"></div>
     </div>
 </body>
+
 </html>
