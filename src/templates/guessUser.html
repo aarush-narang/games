@@ -23,14 +23,14 @@
                 <button id="new-num" class="nav-btn btn" type="button">Restart</button>
             </div>
         </div>
-        <div id="settings">
+        <form id="settings">
             <div id="num-range">
                 <input id="min-range" type="number" placeholder="1" maxlength="9" oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                 <div style="color: rgb(4, 65, 65);">to</div>
                 <input id="max-range" type="number" placeholder="100" maxlength="9" oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
             </div>
-            <button id="play-btn" class="btn btn-effect">Play</button>
-        </div>
+            <button id="play-btn" class="btn btn-effect" type="submit">Play</button>
+        </form>
         <div id="guess-area">
             <div id="guess-text">Guess Here:</div>
             <form id="guess-form">
