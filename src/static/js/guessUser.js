@@ -6,7 +6,7 @@
     let guessed = []
     let minGuess = 0
     let maxGuess = 0
-    
+
     // element vars
     const revealNumber = document.getElementById('reveal-num')
     const newNum = document.getElementById('new-num')
@@ -108,8 +108,9 @@
         event.preventDefault()
         minVal = Number(minInput.value)
         maxVal = Number(maxInput.value)
-        if (!minVal) return displayMsg('Please enter a minimum value.', 5000, 'error')
-        else if (!maxVal) return displayMsg('Please enter a maximum value.', 5000, 'error')
+
+        if (!minVal && minVal !== 0) return displayMsg('Please enter a minimum value.', 5000, 'error')
+        else if (!maxVal && maxVal !== 0) return displayMsg('Please enter a maximum value.', 5000, 'error')
         else if (minVal > maxVal) return displayMsg('The minimum value has to be greater than the maximum value.', 8000, 'warning')
         else if (minVal === maxVal) return displayMsg('Your minimum value cannot equal your maximum value.', 5000, 'error')
         disable(minInput, maxInput, playBtn)
@@ -146,6 +147,7 @@
             tries++
             displayMsg(`You got the number in ${tries} tries!`, 0, 'win')
             disable(guessBtn, guessInput, revealNumber)
+            guessInput.value = guess
         }
     })
 
