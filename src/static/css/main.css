@@ -152,7 +152,8 @@ body {
 
     height: fit-content;
 
-    background-color: rgb(124, 169, 169);
+    background-color: rgba(136, 194, 194, 0.268);
+    border: 10px solid rgb(124, 169, 169);
 
     border-radius: 15px;
     padding: 20px;
@@ -173,10 +174,11 @@ body {
     margin-left: 3px;
     
     border-top: 10px solid transparent;
-    border-left: 18px solid rgb(164, 238, 242);
+    border-left: 18px solid rgb(83, 107, 107);;
     border-bottom: 10px solid transparent;
 
-    animation: console 800ms ease 0s infinite forwards;
+    animation: console 850ms ease 0s infinite forwards;
+    animation-delay: 0.3s;
 }
 
 @keyframes console {

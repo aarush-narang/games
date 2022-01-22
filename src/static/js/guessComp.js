@@ -124,7 +124,9 @@
 
         minVal = Number(minInput.value)
         maxVal = Number(maxInput.value)
+
         if (actualNum.value > maxVal || actualNum.value < minVal) return displayMsg('Your actual number cannot be out of your set range', 8000, 'error')
+        else if(actualNum.value == maxVal || actualNum.value == minVal) return displayMsg('Your actual number cannot equal to your range limits', 8000, 'error')
 
         disable(minInput, maxInput, actualNum)
 
