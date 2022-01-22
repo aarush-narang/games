@@ -107,7 +107,7 @@
                 </div>
             `
         });
-
+        hangman.style.backgroundImage = `url("/static/images/hangman-pictures/hangman-${tries+wrongGuessed.length}.png")`
         userInput.toggleAttribute('disabled', true) // disables the guess input field
         userSubmitBtn.toggleAttribute('disabled', true) // disables the guess input submit button
         userInput.style.cursor = 'not-allowed'
