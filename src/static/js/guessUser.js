@@ -128,7 +128,6 @@
             enable(guessBtn, guessInput, revealNumber)
 
             randomNumber = getRandomInt(minVal, maxVal)
-            console.log(randomNumber) // for testing
         }, 1501);
     })
     guessForm.addEventListener('submit', (event) => { // when a guess is submitted run checks
