@@ -4,9 +4,13 @@
 
     // element vars
     const token = document.getElementsByName('csrf_token')
+
     const newNum = document.getElementById('new-num')
     const playBtn = document.getElementById('play-btn')
     const settingsForm = document.getElementById('settings')
+
+    const clientConsole = document.getElementById('console')
+    const consoleText = document.getElementById('console-text')
     const clientMsg = document.getElementById('msg')
 
     const minInput = document.getElementById('min-range')
@@ -39,6 +43,7 @@
             resetMsg()
         })
     }
+
     function resetMsg() {
         clientMsg.style.display = 'none'
         clientMsg.innerText = ''
@@ -53,6 +58,7 @@
             element.classList.add('disabled')
         })
     }
+
     function enable(...elements) {
         elements.forEach(element => {
             element.toggleAttribute('disabled', false)
@@ -64,7 +70,9 @@
         minInput.value = ''
         maxInput.value = ''
         actualNum.value = ''
+        consoleText.innerText = ''
 
+        clientConsole.classList.remove('console-f')
         playBtn.classList.remove('pressed')
         randomNumber = null
         minVal = null
@@ -75,12 +83,38 @@
         enable(minInput, maxInput, actualNum)
     }
 
+    function solve(lower_limit, upper_limit, user_number) {
+        let guess = 0 // current guess
+        const guesses = [] // guesses made
+        let tries = 0
+
+        const solveInterval = setInterval(() => {
+            tries += 1
+
+            guess = Math.trunc(((upper_limit - lower_limit) / 2) + lower_limit)
+
+            consoleText.innerText = guesses.join('\n')
+
+            if (guess > user_number) {
+                upper_limit = guess
+                guesses.push(`Guess: ${guess}. Making new guess...`)
+            } else if (guess < user_number) {
+                lower_limit = guess
+                guesses.push(`Guess: ${guess}. Making new guess...`)
+            } else {
+                guesses.push(`Guess: ${guess}. I got your number in ${tries} tries!`)
+                consoleText.innerText = guesses.join('\n')
+                clearInterval(solveInterval)
+            }
+        }, 200);
+    }
+
     window.addEventListener('keypress', () => { // if they type text and the guess input isnt focused, focus it
         if (minInput.value === '') {
             minInput.focus()
-        } else if(maxInput.value === '') {
+        } else if (maxInput.value === '') {
             maxInput.focus()
-        } else if(actualNum.value === '') {
+        } else if (actualNum.value === '') {
             actualNum.focus()
         }
     })
@@ -100,8 +134,10 @@
         if (minVal > maxVal) return displayMsg('The minimum value has to be greater than the maximum value.', 8000, 'warning')
         else if (minVal === maxVal) return displayMsg('Your minimum value cannot equal your maximum value.', 5000, 'error')
         playBtn.classList.add('pressed')
-        
-        const solveGuessXHR = new XMLHttpRequest()
+
+        solve(minVal, maxVal, actualNum.value)
+        clientConsole.classList.add('console-f')
+
     })
 
     newNum.addEventListener('click', restart) // If they restart, clear all variables and disable guess area

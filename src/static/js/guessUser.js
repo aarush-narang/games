@@ -4,6 +4,7 @@
     let tries = 0
     let maxVal, minVal
     let guessed = []
+    let formattedGuesses = []
     let minGuess = 0
     let maxGuess = 0
 
@@ -20,6 +21,9 @@
     const minInput = document.getElementById('min-range')
     const maxInput = document.getElementById('max-range')
     const guessInput = document.getElementById('guess-input')
+
+    const clientConsole = document.getElementById('console')
+    const consoleText = document.getElementById('console-text')
 
     // fns
     function displayMsg(msg = '', delay = 5000, type = 'error') {
@@ -79,12 +83,15 @@
         minInput.value = ''
         maxInput.value = ''
         guessInput.value = ''
+        consoleText.innerText = ''
 
+        clientConsole.classList.remove('console-f')
         playBtn.classList.remove('pressed')
         randomNumber = null
         minVal = null
         maxVal = null
         guessed = []
+        formattedGuesses = []
         tries = 0
         disable(guessBtn, guessInput)
         resetMsg()
@@ -136,26 +143,43 @@
         if (!guess) return displayMsg('Please enter a guess.', 5000, 'error')
         else if (guess > maxVal || guess < minVal) return displayMsg('Your guess is out of your set range.', 5000, 'warning')
         else if (guessed.includes(guess)) return displayMsg('You\'ve already guessed this number.', 5000, 'warning')
-        else if (guess !== randomNumber) { // If they dont get the number, increase tries and add to array.
+
+        clientConsole.classList.add('console-f')
+
+        if (guess !== randomNumber) { // If they dont get the number, increase tries and add to array.
 
             if (guess < randomNumber && guess > minGuess) minGuess = guess
             else if (guess > randomNumber && guess < maxGuess) maxGuess = guess
 
             guessed.push(guess)
+
+            formattedGuesses.push(`Incorrect guess: ${guess}. Try again... (My number is between ${minGuess} and ${maxGuess})`)
+
+            guessInput.value = ''
             tries++
-            displayMsg(`Wrong number, Try again!\n(My number is between ${minGuess} and ${maxGuess})`, 5000, 'error')
+            displayMsg(`Wrong number, Try again!\n`, 5000, 'error')
         } else if (guess === randomNumber) { // If they do get the number and increase tries and disable the guessing area
             tries++
+
+            formattedGuesses.push(`You got the number (${randomNumber}) in ${tries} tries!`)
             displayMsg(`You got the number in ${tries} tries!`, 0, 'success')
+
             disable(guessBtn, guessInput, revealNumber)
             guessInput.value = guess
         }
+
+        consoleText.innerText = formattedGuesses.join('\n')
     })
 
     newNum.addEventListener('click', restart) // If they restart, clear all variables and disable guess area
 
     revealNumber.addEventListener('click', (event) => { // When they click the reveal number button, disable guess area in case it isnt already and display the number
+        clientConsole.classList.add('console-f')
+        formattedGuesses.push(`Your number was ${randomNumber}.`)
+        consoleText.innerText = formattedGuesses.join('\n')
+
         displayMsg(`Your number was ${randomNumber}.`, 0, 'error')
+
         guessInput.value = randomNumber
         disable(guessBtn, guessInput, revealNumber)
     })

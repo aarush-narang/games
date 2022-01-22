@@ -34,9 +34,7 @@
     height: 5vh;
     max-height: 45px;
 
-    margin-top: 30px;
-    margin-right: 5px;
-    margin-left: 5px;
+    margin: 30px 5px 20px 5px;
 /* add some fancy styles to play button */
 }
 #min-range, #max-range {

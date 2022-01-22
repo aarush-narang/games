@@ -137,3 +137,96 @@ body {
     box-shadow: 0 0 0 4px rgb(227, 196, 97), 6px 8px 10px 4px #f3ecace7;
     transform: translateY(4px) translateX(2px);
 }
+/* console styles */
+/* console where guesses are displayed */
+
+#console {
+    transition: 450ms cubic-bezier(0.69, 0.4, 0.2, 0.85); 
+
+    min-width: 200px;
+    width: fit-content;
+    max-width: 800px;
+
+    height: fit-content;
+
+    background-color: rgb(124, 169, 169);
+
+    border-radius: 15px;
+    padding: 20px;
+    margin: 30px 0 50px 0;
+
+    font-size: 20px;
+    font-family: Urbanist;
+    color: rgb(19, 59, 67);
+    font-weight: 600;
+}
+#console::after {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    content: '';
+
+    margin-top: 5px;
+    margin-left: 3px;
+    
+    border-top: 10px solid transparent;
+    border-left: 18px solid rgb(164, 238, 242);
+    border-bottom: 10px solid transparent;
+
+    animation: console 800ms ease 0s infinite forwards;
+}
+
+@keyframes console {
+    0% {
+        opacity: 100%;
+        transform: translateX(-4px);
+    }
+    10% {
+        transform: translateX(-3.5px);
+    }
+    20% {
+        transform: translateX(-3px);
+    }
+    30% {
+        transform: translateX(-2.5px);
+    }
+    40% {
+        transform: translateX(-2px);
+    }
+    50% {
+        opacity: 50%;
+        transform: translateX(-1.5px);
+    }
+    60% {
+        transform: translateX(-2px);
+    }
+    70% {
+        transform: translateX(-2.5px);
+    }
+    80% {
+        transform: translateX(-3px);
+    }
+    90% {
+        transform: translateX(-3.5px);
+    }
+    100% {
+        opacity: 100%;
+        transform: translateX(-4px);
+    }
+}
+
+#console-text {
+    margin: 0;
+}
+/* when the console is unfocused */
+.console-unf {
+    opacity: 0;
+    transform: translateY(50px);
+    pointer-events: none;
+}
+/* when the console is focused */
+.console-f {
+    pointer-events: all;
+    opacity: 100;
+    transform: translateY(0px);
+}

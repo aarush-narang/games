@@ -23,18 +23,20 @@
         </div>
         <form id="settings">
             <div id="num-range">
-                <input id="min-range" type="number" placeholder="1" maxlength="9" oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                <input id="min-range" type="number" placeholder="1" >
                 <div style="color: rgb(4, 65, 65);">to</div>
-                <input id="max-range" type="number" placeholder="100" maxlength="9" oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                <input id="max-range" type="number" placeholder="100" >
             </div>
             <div id="guess-area">
                 <div id="guess-text">Enter your guess here:</div>
-                <input id="guess-input" type="number" inputmode="numeric" placeholder="1" maxlength="9" oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                <input id="guess-input" type="number" inputmode="numeric" placeholder="1">
             </div>
             <button id="play-btn" class="btn btn-effect" type="submit">Play</button>
         </form>
-        
         <div id="msg"></div>
+        <div id="console" class="console-unf">
+            <p id="console-text"></p>
+        </div>
     </div>
 </body>
 </html>
