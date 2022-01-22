@@ -11,7 +11,8 @@
     // fns
     function displayMsg(msg = '', delay = 5000, type = 'error') {
         clientMsg.innerText = msg
-        clientMsg.style.display = 'block'
+        clientMsg.style.opacity = '100'
+        clientMsg.style.pointerEvents = 'all'
         clientMsg.classList.add(type.toLowerCase())
 
         delay === 0 ? delay = 1000000 : delay
@@ -20,7 +21,8 @@
     }
 
     function resetMsg() {
-        clientMsg.style.display = 'none'
+        clientMsg.style.opacity = '0'
+        clientMsg.style.pointerEvents = 'none'
         clientMsg.innerText = ''
         clientMsg.classList.remove('success')
         clientMsg.classList.remove('error')

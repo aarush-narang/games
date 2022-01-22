@@ -13,7 +13,6 @@
 <body>
     <div>
         <button id="return-home" onclick="window.location = '/'">Return Home</button>
-        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     </div>
     <div id="container">
         <div id="nav">
@@ -23,9 +22,9 @@
         </div>
         <form id="settings">
             <div id="num-range">
-                <input id="min-range" type="number" placeholder="1" >
+                <input id="min-range" type="number" placeholder="1" inputmode="numeric">
                 <div style="color: rgb(4, 65, 65);">to</div>
-                <input id="max-range" type="number" placeholder="100" >
+                <input id="max-range" type="number" placeholder="100" inputmode="numeric">
             </div>
             <div id="guess-area">
                 <div id="guess-text">Enter your guess here:</div>
