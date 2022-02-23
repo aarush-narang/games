@@ -1,7 +1,5 @@
 import random
-from flask import jsonify, request
-import json
-import math
+from flask import request
 
 __name__ = 'main' # have to change the name for some reason otherwise it wont import
 
