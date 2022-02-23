@@ -14,3 +14,4 @@ cert.pem
 key.pem
 __pycache__
 todo
+word_sorter.py
