@@ -7,8 +7,13 @@ Created using Flask and VanillaJS. Includes Tic-Tac-Toe, Hangman, Rock Paper Sci
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install the following dependencies
 
 - flask
-- flask_wtf
 
+Additionally, create a .env file in the root directory with the following variables
+- DOMAIN
+    - your local IP address.
+- PORT
+    - the port you want to use.
+    
 Then, change your directory to the `/games/src` directory. To start, type
 
 ```bash

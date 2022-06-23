@@ -1,13 +1,8 @@
 from flask import Flask
 from routes import main_router
 import os
-from flask_wtf import CSRFProtect
 
 app = Flask(__name__)
-app.secret_key = os.getenv('FLASK_SECRET_KEY')
-
-csrf = CSRFProtect()
-csrf.init_app(app)
 
 app.register_blueprint(main_router.main_router, url_prefix='/')
 
