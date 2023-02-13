@@ -24,19 +24,19 @@ def getHangmanWord():
     difficulty = request.args.get('diff')
 
     if difficulty == 'easy':
-        with open('./static/other/words/easyWords.txt') as f:
+        with open('api/static/other/words/easyWords.txt') as f:
             words = list(f)
     elif difficulty == 'medium':
-        with open('./static/other/words/mediumWords.txt') as f:
+        with open('api/static/other/words/mediumWords.txt') as f:
             words = list(f)
     elif difficulty == 'hard':
-        with open('./static/other/words/hardWords.txt') as f:
+        with open('api/static/other/words/hardWords.txt') as f:
             words = list(f)
     elif difficulty == 'impossible':
-        with open('./static/other/words/impossibleWords.txt') as f:
+        with open('api/static/other/words/impossibleWords.txt') as f:
             words = list(f)
     else:
-        with open('./static/other/words/allwords.txt') as f:
+        with open('api/static/other/words/allwords.txt') as f:
             words = list(f)
     
 
