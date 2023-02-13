@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GRDMM0ZE7B"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-GRDMM0ZE7B');
+    </script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +19,7 @@
     <script type="text/javascript" src="{{ url_for('static', filename='js/ttt.js') }}" defer></script>
     <title>Tic Tac Toe</title>
 </head>
+
 <body>
     <div>
         <button id="return-home" onclick="window.location = '/'">Return Home</button>
@@ -23,16 +34,35 @@
             </div>
         </div>
         <div id="game">
-            <button class="cross"><div></div></button>  
-            <button class="cross"><div></div></button>
-            <button class="cross"><div></div></button>
-            <button class="cross"><div></div></button>
-            <button class="cross"><div></div></button>
-            <button class="cross"><div></div></button>
-            <button class="cross"><div></div></button>
-            <button class="cross"><div></div></button>
-            <button class="cross"><div></div></button>
+            <button class="cross">
+                <div></div>
+            </button>
+            <button class="cross">
+                <div></div>
+            </button>
+            <button class="cross">
+                <div></div>
+            </button>
+            <button class="cross">
+                <div></div>
+            </button>
+            <button class="cross">
+                <div></div>
+            </button>
+            <button class="cross">
+                <div></div>
+            </button>
+            <button class="cross">
+                <div></div>
+            </button>
+            <button class="cross">
+                <div></div>
+            </button>
+            <button class="cross">
+                <div></div>
+            </button>
         </div>
     </div>
 </body>
+
 </html>
