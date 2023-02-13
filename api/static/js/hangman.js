@@ -67,7 +67,7 @@
 
             loadWord(fullWord)
 
-            console.log(fullWord)
+            // console.log(fullWord)
         })
         wordReq.addEventListener('error', (event) => {
             console.log(event)
